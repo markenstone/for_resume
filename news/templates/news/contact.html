@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Связаться с нами{% endblock %}
+
+
+
+{% block content %}
+<h3>Обратная связь</h3>
+<form  method="post">
+    {% csrf_token %}
+    {{ form.as_p }} <!-- элементы формы будут в параграфе-->
+    <div class="d-grid gap-1">
+    <button type="submit" class='btn btn-primary '>send</button>
+    </div>
+</form>
+
+{% endblock %}

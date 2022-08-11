@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{news_item.title}}{% endblock %}
+{% block sidebar%}
+
+{% include "inc/_sidebar.html" %}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        Категория:<a href="{{object.category.get_absolute_url}}">{{object.category}}</a>
+    </div>
+    <div class="card-body">
+            {% if object.photo %}
+            <img src="{{ object.photo.url}}" alt="" width="350" class="rounded float-start me-4">
+
+            {% else %}
+            <img src="https://picsum.photos/id/870/325/250?grayscale" alt=""
+                 class="rounded float-start me-4">
+            {% endif %}
+            <h5 class="card-title">{{ object.title }}</h5>
+            <p class="card-text ">{{ object.content|safe|linebreaksbr}}</p>
+        </div>
+
+
+
+    <div class="card-footer text-muted">
+         {{ object.created_at| date:"Y-m-d"}}
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
