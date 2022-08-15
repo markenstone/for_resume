@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 
 # Create your views here.
 def register(request):
-    if request.method == 'POST':  # проверка на метод
+    if request.method == 'POST':
         form = UserRigisterForm(request.POST)
         if form.is_valid():  # если форма валидна save
             user = form.save()
@@ -69,7 +69,7 @@ class HomeNews(ListView):
     context_object_name = 'news'  # по сути ренейм object_list в  объект news
     paginate_by = 3
 
-    # extra_context = {'title': 'Главная'} #Не рекомендуется использование, только для статичных данных
+    # extra_context = {'title': 'Главная'}
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)  # не затереть предыдущее значение
         context['title'] = 'Главная страница'
